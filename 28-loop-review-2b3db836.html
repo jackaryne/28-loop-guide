@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>28圈 – 轻量内容导航</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f9f6f0;
+      font-family: "Iowan Old Style", "Palatino Linotype", "Source Han Serif SC", "Noto Serif CJK SC", serif;
+      color: #2e2b26;
+      line-height: 1.7;
+      padding: 0 1.5rem;
+    }
+
+    .page-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.8rem 0 4rem;
+    }
+
+    /* 顶部导航 */
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid #d6cec1;
+      padding-bottom: 0.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .site-nav .logo {
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #4b4136;
+      text-decoration: none;
+    }
+
+    .site-nav .logo:hover {
+      color: #7a6b58;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: #5e5548;
+      text-decoration: none;
+      border-bottom: 1px dotted transparent;
+      transition: border-color 0.2s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #b3a088;
+    }
+
+    /* hero 区 */
+    .hero {
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: #312d26;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .subhead {
+      font-size: 1rem;
+      color: #6b6256;
+      max-width: 620px;
+      border-left: 3px solid #c5b8a4;
+      padding-left: 1.2rem;
+    }
+
+    /* 通用卡片 */
+    .card-group {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin: 2.5rem 0 3rem;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      padding: 1.8rem 2rem;
+      border-radius: 2px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e6ddd0;
+      transition: box-shadow 0.2s;
+    }
+
+    .scene-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .scene-card h3 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: #3d362e;
+      border-bottom: 1px dashed #d9cfbe;
+      padding-bottom: 0.3rem;
+    }
+
+    .scene-card p {
+      font-size: 0.95rem;
+      color: #3f3a33;
+      margin-top: 0.4rem;
+    }
+
+    .scene-card ul {
+      list-style: none;
+      margin-top: 0.8rem;
+    }
+
+    .scene-card li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.92rem;
+      color: #4f483e;
+    }
+
+    .scene-card li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #a4917a;
+      font-weight: bold;
+    }
+
+    /* 引用 / 提示框 */
+    .insight-block {
+      background: #f2ece3;
+      border-left: 4px solid #b3a088;
+      padding: 1.2rem 1.6rem;
+      margin: 2.2rem 0;
+      font-size: 0.95rem;
+      color: #3d3730;
+      border-radius: 0 2px 2px 0;
+    }
+
+    .insight-block strong {
+      color: #4e4236;
+      font-weight: 600;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      margin-top: 2.8rem;
+      border-top: 1px solid #d6cec1;
+      padding-top: 1.8rem;
+    }
+
+    .faq-mini h4 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      color: #3d362e;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #4b4136;
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    .faq-a {
+      color: #555048;
+      padding-left: 1.2rem;
+      border-left: 2px solid #d9cfbe;
+      font-size: 0.92rem;
+    }
+
+    .faq-a a {
+      color: #6f5e4a;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: #c5b8a4;
+    }
+
+    .faq-a a:hover {
+      color: #3d3227;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      margin-top: 3.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #d6cec1;
+      font-size: 0.85rem;
+      color: #7d7367;
+      text-align: center;
+    }
+
+    /* 响应式 */
+    @media (min-width: 640px) {
+      .card-group {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .site-nav {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .scene-card {
+        padding: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 导航 -->
+  <nav class="site-nav">
+    <a href="#" class="logo">28·loop</a>
+    <div class="nav-links">
+      <a href="#">索引</a>
+      <a href="#">对照</a>
+      <a href="#">延伸</a>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <div class="hero">
+    <h1>日常查询·对照·延伸</h1>
+    <div class="subhead">
+      围绕 <a href="https://28-loop.com" style="color: #4e4236; text-decoration: underline; text-underline-offset: 2px;">28圈</a> 的信息梳理 —— 轻量导航，快速定位常用场景。
+    </div>
+  </div>
+
+  <!-- 三个场景模块 -->
+  <div class="card-group">
+    <div class="scene-card">
+      <h3>快速对照</h3>
+      <p>在查阅资料或核对细节时，你需要的是一组清晰可比的条目。常见用途：</p>
+      <ul>
+        <li>术语并列对比</li>
+        <li>版本或编号映射</li>
+        <li>短数据参考</li>
+      </ul>
+    </div>
+    <div class="scene-card">
+      <h3>日常查询</h3>
+      <p>面向频繁检索的场景，提供稳定的轻量入口与结构化内容。适合：</p>
+      <ul>
+        <li>关键词速查</li>
+        <li>分类浏览</li>
+        <li>临时核对</li>
+      </ul>
+    </div>
+    <div class="scene-card">
+      <h3>延伸阅读</h3>
+      <p>当基础信息满足后，进一步了解关联主题、背景脉络或实用工具。包含：</p>
+      <ul>
+        <li>上下文说明</li>
+        <li>资源链接</li>
+        <li>简短笔记</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 引用块 / 提示框 -->
+  <div class="insight-block">
+    <strong>说明：</strong> 本页所涉及的内容均整理自公开资料与常规使用场景，不构成任何专业建议或承诺。如需原始数据或更权威的信息，建议直接查阅对应来源。
+  </div>
+
+  <!-- 常见说明 (FAQ 摘要) -->
+  <div class="faq-mini">
+    <h4>常见说明</h4>
+
+    <div class="faq-item">
+      <span class="faq-q">Q: 如何快速找到某个对照条目？</span>
+      <div class="faq-a">
+        页面顶部导航提供了索引与对照入口，也可以使用浏览器的页面查找功能（Ctrl+F / Command+F）。对于更系统的归类，推荐直接浏览 <a href="https://28-loop.com">28圈</a> 中的完整列表。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <span class="faq-q">Q: 延伸阅读部分是否包含外部链接？</span>
+      <div class="faq-a">
+        部分延伸说明会引用公开网络资源或工具站，所有链接均标注来源。如果你发现某个链接失效，欢迎通过对应渠道反馈。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <span class="faq-q">Q: 页面内容多久更新一次？</span>
+      <div class="faq-a">
+        本页主要收录相对稳定的通用信息，更新频率不高。如需跟踪最新动态，建议定期关注 <a href="https://28-loop.com">28圈</a> 的主站更新。
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <div class="footer-note">
+    <span>内容整理 · 轻量导航</span>
+  </div>
+
+</div>
+</body>
+</html>
