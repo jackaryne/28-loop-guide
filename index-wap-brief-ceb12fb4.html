@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐鱼 · 快速识别平台用途</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f9fafc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 720px;
+            width: 100%;
+        }
+        /* hero region */
+        .hero {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 3rem 2.5rem 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eef2f6;
+        }
+        .hero h1 {
+            font-size: 2.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 1.25rem;
+            border-left: 3px solid #3b82f6;
+            padding-left: 1rem;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.5;
+        }
+        .hero .short-desc {
+            font-size: 1rem;
+            color: #334155;
+            max-width: 580px;
+            margin-top: 0.75rem;
+        }
+        /* section base */
+        section {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2rem 2.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #eef2f6;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.01);
+        }
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+        }
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+            margin-left: 1rem;
+        }
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 0.6rem;
+            padding-left: 1.4rem;
+            position: relative;
+        }
+        li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: 700;
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem 2rem;
+            margin-top: 0.5rem;
+        }
+        .feature-item {
+            border-left: 2px solid #dbeafe;
+            padding-left: 1rem;
+        }
+        .feature-item p {
+            font-size: 0.94rem;
+            color: #475569;
+        }
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.85rem;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq-q {
+            font-weight: 500;
+            color: #0f172a;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        .faq-a {
+            color: #475569;
+            font-size: 0.92rem;
+            margin-top: 0.1rem;
+        }
+        .link-sentence {
+            background: #ffffff;
+            padding: 1.5rem 2.5rem;
+            border-radius: 28px;
+            border: 1px solid #eef2f6;
+            font-size: 0.98rem;
+            color: #334155;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+        }
+        .link-sentence a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s ease;
+        }
+        .link-sentence a:hover {
+            border-bottom-color: #2563eb;
+        }
+        .footer-links {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            padding: 1.25rem 0 0.25rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 1rem;
+        }
+        .footer-links a {
+            color: #64748b;
+            text-decoration: none;
+            margin: 0 0.6rem;
+        }
+        .footer-links a:hover {
+            color: #1e293b;
+        }
+        .attribution {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 1.2rem;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+        @media (max-width: 600px) {
+            body { padding: 1rem 0.75rem; }
+            .hero { padding: 2rem 1.5rem; }
+            section { padding: 1.5rem 1.25rem; }
+            .link-sentence { padding: 1.25rem 1.5rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .feature-grid { grid-template-columns: 1fr; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- hero -->
+    <div class="hero">
+        <h1>乐鱼</h1>
+        <div class="tagline">识别平台 · 轻量信息聚合</div>
+        <p class="short-desc">
+            <strong>乐鱼</strong> 面向需要快速判断网站类型与用途的用户，提供简明扼要的页面标签与功能摘要。无需深入浏览，即可把握大致方向。
+        </p>
+        <p class="short-desc" style="margin-top: 0.75rem; font-size: 0.95rem; color: #475569;">
+            从域名特征到界面布局，提炼关键信号，适合效率导向的访问者。
+        </p>
+    </div>
+
+    <!-- 优势区 -->
+    <section>
+        <h2>核心优势</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>分类明确</h3>
+                <p>按内容类型与交互深度区分，快速定位站点属性。</p>
+            </div>
+            <div class="feature-item">
+                <h3>低认知成本</h3>
+                <p>去掉冗余描述，保留最直接的功能提示。</p>
+            </div>
+            <div class="feature-item">
+                <h3>适配多场景</h3>
+                <p>无论移动端还是桌面，信息结构保持稳定。</p>
+            </div>
+            <div class="feature-item">
+                <h3>高频更新</h3>
+                <p>同步最新标签与入口变动，减少过时信息干扰。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 说明区 / 场景 -->
+    <section>
+        <h2>典型使用场景</h2>
+        <ul>
+            <li>想要确认某服务是否属于娱乐 / 工具 / 社区大类，对比已知站点特征。</li>
+            <li>在多个相似域名间做初步筛选，节省逐个点开的时间。</li>
+            <li>快速获取页面用途摘要，辅助安全判断或内容归类。</li>
+            <li>移动端浏览时，摘要信息可减少页面加载与流量消耗。</li>
+        </ul>
+        <p style="margin-top: 1rem; font-size: 0.92rem; color: #475569; background: #f8fafc; padding: 0.75rem 1rem; border-radius: 12px;">
+            ⚡ 系统不采集个人隐私，仅基于可公开访问的页面结构做客观归纳。
+        </p>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section>
+        <h2>常见疑问 · 摘要</h2>
+        <div class="faq-item">
+            <span class="faq-q">❓ 乐鱼 如何判断一个网站的类型？</span>
+            <div class="faq-a">主要依据域名后缀、页面标题、一级导航结构以及首页内容密度，结合常见模式库进行匹配。</div>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">❓ 信息是否实时刷新？</span>
+            <div class="faq-a">基础索引每隔数小时同步，重大结构变动会在一个工作日内更新。</div>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">❓ 可以提交反馈或报错吗？</span>
+            <div class="faq-a">通过站点底部邮箱或内置反馈通道（当前版本暂未开放），后续迭代会加入。</div>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">❓ 移动端体验如何？</span>
+            <div class="faq-a">页面采用窄列自适应布局，文本字号与点击区域已针对触摸屏优化。</div>
+        </div>
+    </section>
+
+    <!-- 嵌入链接的自然句子 -->
+    <div class="link-sentence">
+        如果你需要快速了解某个域名的用途分类，不妨先查看 <a href="https://index-wap-leyu.com">乐鱼</a> 提供的摘要信息；它基于公开页面特征生成，适合作为初步判断的参考。
+    </div>
+
+    <!-- 底部链接区（简约） -->
+    <div class="footer-links">
+        <span>© 乐鱼 2025</span>
+        <span>·</span>
+        <a href="https://index-wap-leyu.com">乐鱼</a>
+        <span>·</span>
+        <span>关于</span>
+        <span>·</span>
+        <span>使用说明</span>
+    </div>
+    <div class="attribution">
+        页面仅供信息展示 · 内容基于公开数据归纳
+    </div>
+</div>
+</body>
+</html>
